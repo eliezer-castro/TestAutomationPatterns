@@ -3,7 +3,11 @@ package br.com.TestAutomationPatterns.factory;
 import br.com.TestAutomationPatterns.builders.PostBuilder;
 import com.github.javafaker.Faker;
 
+
+
+
 public class PostFactory {
+
 
     private static final Faker faker = new Faker();
 

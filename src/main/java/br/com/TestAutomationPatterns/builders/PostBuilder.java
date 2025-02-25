@@ -1,15 +1,9 @@
 package br.com.TestAutomationPatterns.builders;
-import br.com.TestAutomationPatterns.model.Post;
-import com.github.javafaker.Faker;
+import br.com.TestAutomationPatterns.dto.PostDto;
 
 public class PostBuilder {
-        
-    private final Post post;
-    private final Faker faker = new Faker();
 
-    public PostBuilder() {
-        post = new Post();
-    }
+    private final PostDto post = new PostDto();
 
     public PostBuilder withTitle(String title) {
         post.setTitle(title);
@@ -26,7 +20,7 @@ public class PostBuilder {
         return this;
     }
 
-    public Post build() {
+    public PostDto build() {
         return post;
     }
 

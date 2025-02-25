@@ -1,28 +1,24 @@
+import br.com.TestAutomationPatterns.facade.PostFacade;
 import br.com.TestAutomationPatterns.factory.PostFactory;
-import br.com.TestAutomationPatterns.model.Post;
-import io.restassured.RestAssured;
+import br.com.TestAutomationPatterns.dto.PostDto;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static io.restassured.RestAssured.given;
 
 public class CleanPostApiTest {
+    private static PostFacade postFacade;
 
     @BeforeAll
     public static void setup() {
-        RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
+        postFacade = new PostFacade();
     }
 
     @Test
-    public void testCreateUser() {
-       Post post = PostFactory.withDefaultValues().withUserId(5).build();
+    public void testCreatePost() {
+        PostDto post = PostFactory.
+                withDefaultValues()
+                .build();
 
-       given()
-                .body(post)
-                .when()
-                .post("/posts")
-                .then()
-                .statusCode(201);
+        postFacade.createPost(post).then().statusCode(201);
     }
-
 }

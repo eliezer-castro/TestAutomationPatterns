@@ -12,19 +12,17 @@ public class BadPostApiTest {
     }
 
     @Test
-    public void testCreateUser() {
-        // Código "sujo"
+    public void testCreatePost() {
         JsonObject post = new JsonObject();
         post.addProperty("title", "title");
         post.addProperty("body", "lorem ipsum");
         post.addProperty("user", 1);
 
-        given()
+        given().contentType("application/json")
                 .body(post.toString())
                 .when()
                 .post("/posts")
                 .then()
                 .statusCode(201);
     }
-
 }
